@@ -85,12 +85,12 @@ public:
     static MWDSkyBox* GetDefaultSkyBox() {
         MWDSkyBox* skybox = NULL;
         skybox = new MWDSkyBox(
-            "C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/img/skybox/right.jpg",
-            "C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/img/skybox/left.jpg", 
-            "C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/img/skybox/bottom.jpg", 
-            "C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/img/skybox/top.jpg", 
-            "C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/img/skybox/front.jpg", 
-            "C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/img/skybox/back.jpg");
+            "C:/Users/InputWindy/Desktop/MWDRenderer/img/skybox/right.jpg",
+            "C:/Users/InputWindy/Desktop/MWDRenderer/img/skybox/left.jpg", 
+            "C:/Users/InputWindy/Desktop/MWDRenderer/img/skybox/bottom.jpg", 
+            "C:/Users/InputWindy/Desktop/MWDRenderer/img/skybox/top.jpg", 
+            "C:/Users/InputWindy/Desktop/MWDRenderer/img/skybox/front.jpg", 
+            "C:/Users/InputWindy/Desktop/MWDRenderer/img/skybox/back.jpg");
         return skybox;
     }
 private:

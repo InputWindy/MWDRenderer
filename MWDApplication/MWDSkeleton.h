@@ -6,12 +6,10 @@ class MWDModel;
 //骨骼维护一个骨骼节点信息，一个aabb3包围盒，树形拓扑结构，骨骼名称
 class MWDSkeleton
 {
+	friend class MWDModel;
 public:
 	//骨骼数据
 	MWDBoneNode			m_bone;
-
-	//维护子节点变换到父节点的T矩阵
-	mat4				m_TansformMatrix;
 
 	MWDSkeleton*		m_pParent;
 	vector<MWDSkeleton*> m_skeletonChildren;
@@ -22,7 +20,7 @@ public:
 	//骨骼名称
 	string				m_skeletonName;
 private:
-	void addSkeleton(MWDSkeleton* skeleton) {
+	void addChildSkeleton(MWDSkeleton* skeleton) {
 		m_skeletonChildren.push_back(skeleton);
 	}
 };

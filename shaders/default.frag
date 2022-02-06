@@ -1,5 +1,43 @@
 #version 330 core
+//常量
+const float PI = 3.1415926535;
+const int MAX_POINT_LIGHT_NUM = 4;
+const int MAX_SPOT_LIGHT_NUM = 4;
+const int MAX_AREA_LIGHT_NUM = 4;
+
 out vec4 FragColor;
+
+struct DirectionalLight{
+    vec3 Color;
+    vec3 Direction;
+};
+
+struct PointLight{
+    vec3 Color;
+    vec3 Position;
+    float CutOff;
+};
+
+struct SpotLight{
+    vec3 Color;
+    vec3 Position;
+    vec3 Direction;
+    float Angle;
+    float CutOff;
+};
+
+struct AreaLight{
+    vec3 Color;
+    vec3 Position;
+    vec3 Normal;
+    float width;
+    float height;
+    float CutOff;
+};
+
+struct Camera{
+    vec3 Position;
+};
 
 in VS_OUT{
     vec3 vs_position;//世界空间坐标
@@ -7,21 +45,34 @@ in VS_OUT{
     vec2 uv;         //uv
     
     mat3 TBN;        //TBN矩阵
+
+    flat ivec4   BoneIDs;
+    vec4    BoneWeights;
 }fs_in;
 
+//暂时使用的内置变量，之后需要替换成光源和相机
 uniform vec3 lightPos;
 uniform vec3 lightColor;//pbr
 uniform vec3 viewPos;//pbr
 
+//内置变量（最多一个太阳，最多4个灯泡，最多4个手电筒，最多4个发光平面,一台摄像机）
+uniform DirectionalLight sunLight;
+uniform int PointLightNum;//灯光数量
+uniform PointLight pointLights[MAX_POINT_LIGHT_NUM];
+uniform int SpotLightNum;//手电筒数量
+uniform SpotLight spotLights[MAX_SPOT_LIGHT_NUM];
+uniform int AreaLightNum;//手电筒数量
+uniform AreaLight AreaLights[MAX_AREA_LIGHT_NUM];
+uniform Camera camera;
+
+uniform samplerCube environment_map;//环境光照（由反射探针或天空盒提供）
+
+//手动传入的参数（PBR纹理）
 uniform sampler2D diffuse_map;
 uniform sampler2D normal_map;
 uniform sampler2D metallic_map;
 uniform sampler2D ao_map;
 uniform sampler2D roughness_map;
-
-uniform samplerCube environment_map;
-
-const float PI = 3.1415926535;
 
 //H:半角向量。roughness：粗糙度。N:顶点法线——NDF方程
 float D_GGX_TR(vec3 N, vec3 H, float roughness)
@@ -61,7 +112,8 @@ vec3 fresnelSchlick(float cosTheta, vec3 F0)
 }
 
 //计算光源强度衰减（平方反比）
-vec3 CalRadiance(vec3 light_color,float _distance){
+vec3 CalRadiance(vec3 light_color,float _distance)
+{
     float attenuation = 1.0 / (_distance * _distance);
     return light_color*attenuation;
 }
@@ -108,10 +160,14 @@ void main()
     kD *= 1.0 - metallic; 
 
     float NdotL = max(dot(normal, lightDir), 0.0);  
+
+    vec3 fr = ( kD*albedo/PI + kS*specular);
+    //Lo只是所有光源给到的直接光照。
+    //间接光照要由irradiance求蒙特卡洛积分
+    //
+    Lo += fr * lightColor * NdotL;
     
-    Lo += ( kD*albedo / PI + kS*specular) * lightColor * NdotL;
-    
-    FragColor   = vec4( irradiance,1.0);
+    FragColor   = vec4( Lo*5 ,1.0);
     //====================以下进行gamma校正===============//
     FragColor.rgb = pow(FragColor.rgb, vec3(1.0/2.2));//颜色修改为sRGB空间
 }

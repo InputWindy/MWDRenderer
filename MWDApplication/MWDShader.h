@@ -162,17 +162,17 @@ public:
         glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
     }
     static MWDShader* GetDefault() {
-        return new MWDShader("C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/shaders/default.vert", "C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/shaders/default.frag");
+        return new MWDShader("C:/Users/InputWindy/Desktop/MWDRenderer/shaders/default.vert", "C:/Users/InputWindy/Desktop/MWDRenderer/shaders/default.frag");
     }
     static MWDShader* GetScreenShader() {
         if (!ScreenShader) {
-            ScreenShader = new MWDShader("C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/shaders/offScreen.vert", "C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/shaders/offScreen.frag");
+            ScreenShader = new MWDShader("C:/Users/InputWindy/Desktop/MWDRenderer/shaders/offScreen.vert", "C:/Users/InputWindy/Desktop/MWDRenderer/shaders/offScreen.frag");
         }
         return ScreenShader;
     }
     static MWDShader* GetSkyBoxShader() {
         if (!SkyBoxShader) {
-            SkyBoxShader = new MWDShader("C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/shaders/skyBox.vert", "C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/shaders/skyBox.frag");
+            SkyBoxShader = new MWDShader("C:/Users/InputWindy/Desktop/MWDRenderer/shaders/skyBox.vert", "C:/Users/InputWindy/Desktop/MWDRenderer/shaders/skyBox.frag");
         }
         return SkyBoxShader;
     }

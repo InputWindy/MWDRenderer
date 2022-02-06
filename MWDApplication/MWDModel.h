@@ -70,6 +70,16 @@ public:
     void SetWorldScale(float x, float y, float z) {
         m_transform.SetWorldScale(x,y,z);
     }
+    void TraverseSkeletonTree(MWDSkeleton* root_node) {
+        if (!root_node) {
+            return;
+        }
+        cout << root_node->m_skeletonName << endl;
+        int child_num = root_node->m_skeletonChildren.size();
+        for (int i = 0; i < child_num; ++i) {
+            TraverseSkeletonTree(root_node->m_skeletonChildren[i]);
+        }
+    }
 private:
     void loadModel(string const& path)
     {
@@ -83,8 +93,9 @@ private:
         }
         directory = path.substr(0, path.find_last_of('/'));
         LoadAnimation(scene);                     //加载模型包含的所有动画
-        LoadSkeleton(-1,scene->mRootNode, scene); //加载模型所有的骨骼（维护父子关系）
-        LoadMesh(scene);                          //加载所有的蒙皮数据（蒙皮数据不维护父子关系）
+        LoadSkeleton(scene->mRootNode, scene);    //加载模型所有的骨骼
+        BuildSkeletonTree(scene);                 //构造骨骼树
+        LoadMesh(scene);                          //加载所有的蒙皮数据
         SetUpAllMeshes();                         //生成所有Mesh的VAO
     }
     //每个Node对应模型的一个子Mesh
@@ -118,7 +129,7 @@ private:
             }
         }
         //加载骨骼数据（递归）
-        void LoadSkeleton(int parent_skeleton, aiNode* node,const aiScene* scene) {
+        void LoadSkeleton(aiNode* node,const aiScene* scene) {
             MWDSkeleton ret = MWDSkeleton();
             int node_mesh_num = node->mNumMeshes;
             //遍历当前骨骼节点的所有蒙皮
@@ -138,29 +149,65 @@ private:
                     //加载一个新骨骼
                     else {
                         bone_name_to_index_map.insert(map<string,int>::value_type(bone_name, bone_name_to_index_map.size()));
-                        //if (parent_skeleton == -1) {
-                        //    //根节点
-                        //}
-                        //else {
-                        //    //非根节点
-                        //}
+                        MWDSkeleton skeleton = MWDSkeleton();
+                        skeleton.m_Owner = this;
+                        skeleton.m_pParent = NULL;
+                        skeleton.m_skeletonName = bone_name;
+                        skeleton.m_bone.m_bAllowRotation = true;
+                        skeleton.m_bone.m_bAllowTranslation = true;
+                        skeleton.m_bone.m_bIsEffector = true;
+                        skeleton.m_bone.m_fIKWeight = 0;
+                        skeleton.m_bone.m_fMaxRotation = 135.0f;
+                        skeleton.m_bone.m_fMinRotation = 0.0f;
+                        skeleton.m_bone.m_fMaxTranslation = 2.0f;
+                        skeleton.m_bone.m_fMinTranslation = 0.0f;
+                        for (int m = 0; m < 4; ++m) {
+                            for (int n = 0; n < 4; n++)
+                            {
+                                skeleton.m_bone.m_OffSetMatrix[m][n] = bone->mOffsetMatrix[m][n];
+                            }
+                        }
+                        skeleton.m_bone.m_TargetPosInWorld = vec3(0.0f);
+                        skeleton.m_bone.m_TransformMatrix = mat4(1.0f);
+                        m_SkeletonNode.push_back(skeleton);
                     }
                 }
             }
             //递归遍历子节点
             int child_node_num = node->mNumChildren;
             for (int j = 0; j < child_node_num; ++j) {
-                LoadSkeleton(-1,node->mChildren[j],scene);
+                LoadSkeleton(node->mChildren[j],scene);
             }
         }
-
+        void BuildSkeletonTree(const aiScene* scene) {
+            #pragma region 手动生成根骨
+            m_rootSkeleton = new MWDSkeleton();
+            m_rootSkeleton->m_Owner = this;
+            m_rootSkeleton->m_pParent = NULL;
+            m_rootSkeleton->m_skeletonName = string("rootSkeleton");
+            m_rootSkeleton->m_bone.m_bAllowRotation = false;
+            m_rootSkeleton->m_bone.m_bAllowTranslation = false;
+            m_rootSkeleton->m_bone.m_bIsEffector = false;
+            m_rootSkeleton->m_bone.m_fIKWeight = 0.0f;
+            m_rootSkeleton->m_bone.m_fMaxRotation = 0.0f;
+            m_rootSkeleton->m_bone.m_fMinRotation = 0.0f;
+            m_rootSkeleton->m_bone.m_fMaxTranslation = 0.0f;
+            m_rootSkeleton->m_bone.m_fMinTranslation = 0.0f;
+            m_rootSkeleton->m_bone.m_OffSetMatrix = mat4(1.0f);
+            m_rootSkeleton->m_bone.m_TargetPosInWorld = this->m_transform.GetWorldPosition();
+            m_rootSkeleton->m_bone.m_TransformMatrix = mat4(1.0f);
+            #pragma endregion
+            int child_num = scene->mRootNode->mNumChildren;
+            for (int i = 0; i < child_num; ++i) {
+                ProcessSkeleton(m_rootSkeleton, scene->mRootNode->mChildren[i]);
+            }
+        }
         //设置所有mesh的vao，vbo，ibo
         void SetUpAllMeshes() {
             for (int i = 0; i < m_meshes.size(); ++i) {
                 m_meshes[i].setupMesh();
             }
         }
-
         //如果没找到，就返回-1
         int GetBoneID(string bone_name) {
             map<string,int>::iterator iter = bone_name_to_index_map.find(bone_name);
@@ -170,7 +217,7 @@ private:
             //cout << "找不到的名字：" << bone_name << "  " << -1 << endl;
             return -1;
         }
-        //填写：名称（√），Owner（√），vertices，indices，父节点，子节点
+        //填写：名称（√），Owner（√），vertices（√），indices（√）
         void processMesh(aiMesh* mesh)
         {
             MWDMesh ret = MWDMesh();
@@ -265,6 +312,23 @@ private:
 
             m_meshes.push_back(ret);
             return ;
+        }
+        //连接骨骼的父子节点
+        void ProcessSkeleton(MWDSkeleton* parent,aiNode* node) {
+            cout << parent->m_skeletonName << endl;
+            int skeleton_id = GetBoneID(string(node->mName.data));
+            if (skeleton_id == -1) {
+                string name(node->mName.data);
+                cout << "没找到子骨骼"<<"  "<< name << endl;
+                return;
+            }
+            MWDSkeleton* cur_skeleton = &m_SkeletonNode[skeleton_id];
+            cur_skeleton->m_pParent = parent;
+            parent->addChildSkeleton(cur_skeleton);
+            int child_num = node->mNumChildren;
+            for (int i = 0; i < child_num; ++i) {
+                ProcessSkeleton(cur_skeleton, node->mChildren[i]);
+            }
         }
 
 };

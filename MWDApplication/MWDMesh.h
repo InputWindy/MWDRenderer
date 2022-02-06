@@ -96,6 +96,7 @@ class MWDMesh
         //存储在显存的Mesh数据
         unsigned int VAO,VBO, IBO;
     private:
+        //加入骨骼动画后，每一帧都要调用一次更新显存的数据
         void setupMesh()
         {
             glGenVertexArrays(1, &VAO);

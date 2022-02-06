@@ -97,6 +97,10 @@ public:
             mat4 proj = mat4();
             MWDMat4* _proj = new MWDMat4(string("projection"), string("proj_matrix"), proj);
             defaultMaterial->AddUniform(_proj);
+
+            mat4 gWVP = mat4();
+            MWDMat4* _gWVP = new MWDMat4(string("gWVP"), string("gWVP_matrix"), gWVP);
+            defaultMaterial->AddUniform(_gWVP);
             #pragma endregion
 
             #pragma region 编辑器内设置的变量
@@ -123,7 +127,7 @@ public:
     //new一个新材质
     static MWDMaterial* GetScreenMaterial() {
         if (!m_screenTexture) {
-            m_screenTexture = new MWDMaterial("C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/shaders/offScreen.vert", "C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/shaders/offScreen.frag");
+            m_screenTexture = new MWDMaterial("C:/Users/InputWindy/Desktop/MWDRenderer/shaders/offScreen.vert", "C:/Users/InputWindy/Desktop/MWDRenderer/shaders/offScreen.frag");
             MWDTexture* tex5 = new MWDTexture(string("screenTexture"), 0);
             m_screenTexture->AddSampler(tex5);
         }

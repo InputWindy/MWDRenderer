@@ -6,7 +6,7 @@
 class MWDTexture {
 public:
     //ShaderÌùÍ¼µ¼Èë
-    MWDTexture(string nameineditor, unsigned int tex_unit, string path = string("C:/Users/InputWindy/Desktop/MyRenderer/MWDEngine/img/default.jpeg")) {
+    MWDTexture(string nameineditor, unsigned int tex_unit, string path = string("C:/Users/InputWindy/Desktop/MWDRenderer/img/default.jpeg")) {
         m_path = path;
         m_tex_unit = tex_unit;
         nameInEditor = nameineditor;
