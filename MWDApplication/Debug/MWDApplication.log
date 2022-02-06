@@ -1,0 +1,77 @@
+﻿  glad.c
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_glfw.cpp
+  imgui_impl_opengl3.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  MWDApplication.cpp
+  MWDCamera.cpp
+  MWDMaterial.cpp
+  MWDMesh.cpp
+  MWDModel.cpp
+  MWDShader.cpp
+  MWDTexture.cpp
+  正在生成代码...
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetErrorCallback，函数 "bool __cdecl ImGui_ImplGlfw_Init(struct GLFWwindow *,bool,enum GlfwClientApi)" (?ImGui_ImplGlfw_Init@@YA_NPAUGLFWwindow@@_NW4GlfwClientApi@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetMonitors，函数 "void __cdecl ImGui_ImplGlfw_UpdateMonitors(void)" (?ImGui_ImplGlfw_UpdateMonitors@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetMonitorPos，函数 "void __cdecl ImGui_ImplGlfw_UpdateMonitors(void)" (?ImGui_ImplGlfw_UpdateMonitors@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetMonitorWorkarea，函数 "void __cdecl ImGui_ImplGlfw_UpdateMonitors(void)" (?ImGui_ImplGlfw_UpdateMonitors@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetMonitorContentScale，函数 "void __cdecl ImGui_ImplGlfw_UpdateMonitors(void)" (?ImGui_ImplGlfw_UpdateMonitors@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetMonitorCallback，函数 "bool __cdecl ImGui_ImplGlfw_Init(struct GLFWwindow *,bool,enum GlfwClientApi)" (?ImGui_ImplGlfw_Init@@YA_NPAUGLFWwindow@@_NW4GlfwClientApi@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetVideoMode，函数 "void __cdecl ImGui_ImplGlfw_UpdateMonitors(void)" (?ImGui_ImplGlfw_UpdateMonitors@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwWindowHint，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+MWDApplication.obj : error LNK2001: 无法解析的外部符号 _glfwWindowHint
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwCreateWindow，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+MWDApplication.obj : error LNK2001: 无法解析的外部符号 _glfwCreateWindow
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwDestroyWindow，函数 "void __cdecl ImGui_ImplGlfw_DestroyWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_DestroyWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetWindowTitle，函数 "void __cdecl ImGui_ImplGlfw_SetWindowTitle(struct ImGuiViewport *,char const *)" (?ImGui_ImplGlfw_SetWindowTitle@@YAXPAUImGuiViewport@@PBD@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetWindowPos，函数 "struct ImVec2 __cdecl ImGui_ImplGlfw_GetWindowPos(struct ImGuiViewport *)" (?ImGui_ImplGlfw_GetWindowPos@@YA?AUImVec2@@PAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetWindowPos，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetWindowSize，函数 "struct ImVec2 __cdecl ImGui_ImplGlfw_GetWindowSize(struct ImGuiViewport *)" (?ImGui_ImplGlfw_GetWindowSize@@YA?AUImVec2@@PAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetWindowSize，函数 "void __cdecl ImGui_ImplGlfw_SetWindowSize(struct ImGuiViewport *,struct ImVec2)" (?ImGui_ImplGlfw_SetWindowSize@@YAXPAUImGuiViewport@@UImVec2@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetFramebufferSize，函数 "void __cdecl ImGui_ImplGlfw_NewFrame(void)" (?ImGui_ImplGlfw_NewFrame@@YAXXZ) 中引用了该符号
+MWDApplication.obj : error LNK2001: 无法解析的外部符号 _glfwGetFramebufferSize
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetWindowOpacity，函数 "void __cdecl ImGui_ImplGlfw_SetWindowAlpha(struct ImGuiViewport *,float)" (?ImGui_ImplGlfw_SetWindowAlpha@@YAXPAUImGuiViewport@@M@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwShowWindow，函数 "void __cdecl ImGui_ImplGlfw_ShowWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_ShowWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwFocusWindow，函数 "void __cdecl ImGui_ImplGlfw_SetWindowFocus(struct ImGuiViewport *)" (?ImGui_ImplGlfw_SetWindowFocus@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetWindowAttrib，函数 "bool __cdecl ImGui_ImplGlfw_GetWindowFocus(struct ImGuiViewport *)" (?ImGui_ImplGlfw_GetWindowFocus@@YA_NPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetWindowPosCallback，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetWindowSizeCallback，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetWindowCloseCallback，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetWindowFocusCallback，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetInputMode，函数 "void __cdecl ImGui_ImplGlfw_UpdateMouseCursor(void)" (?ImGui_ImplGlfw_UpdateMouseCursor@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetInputMode，函数 "void __cdecl ImGui_ImplGlfw_UpdateMouseCursor(void)" (?ImGui_ImplGlfw_UpdateMouseCursor@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetMouseButton，函数 "void __cdecl ImGui_ImplGlfw_UpdateMousePosAndButtons(void)" (?ImGui_ImplGlfw_UpdateMousePosAndButtons@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetCursorPos，函数 "void __cdecl ImGui_ImplGlfw_UpdateMousePosAndButtons(void)" (?ImGui_ImplGlfw_UpdateMousePosAndButtons@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetCursorPos，函数 "void __cdecl ImGui_ImplGlfw_UpdateMousePosAndButtons(void)" (?ImGui_ImplGlfw_UpdateMousePosAndButtons@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwCreateStandardCursor，函数 "bool __cdecl ImGui_ImplGlfw_Init(struct GLFWwindow *,bool,enum GlfwClientApi)" (?ImGui_ImplGlfw_Init@@YA_NPAUGLFWwindow@@_NW4GlfwClientApi@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwDestroyCursor，函数 "void __cdecl ImGui_ImplGlfw_Shutdown(void)" (?ImGui_ImplGlfw_Shutdown@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetCursor，函数 "void __cdecl ImGui_ImplGlfw_UpdateMouseCursor(void)" (?ImGui_ImplGlfw_UpdateMouseCursor@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetKeyCallback，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetCharCallback，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetMouseButtonCallback，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetCursorEnterCallback，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetScrollCallback，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetJoystickAxes，函数 "void __cdecl ImGui_ImplGlfw_UpdateGamepads(void)" (?ImGui_ImplGlfw_UpdateGamepads@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetJoystickButtons，函数 "void __cdecl ImGui_ImplGlfw_UpdateGamepads(void)" (?ImGui_ImplGlfw_UpdateGamepads@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSetClipboardString，函数 "void __cdecl ImGui_ImplGlfw_SetClipboardText(void *,char const *)" (?ImGui_ImplGlfw_SetClipboardText@@YAXPAXPBD@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetClipboardString，函数 "char const * __cdecl ImGui_ImplGlfw_GetClipboardText(void *)" (?ImGui_ImplGlfw_GetClipboardText@@YAPBDPAX@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetTime，函数 "void __cdecl ImGui_ImplGlfw_NewFrame(void)" (?ImGui_ImplGlfw_NewFrame@@YAXXZ) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwMakeContextCurrent，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+MWDApplication.obj : error LNK2001: 无法解析的外部符号 _glfwMakeContextCurrent
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSwapBuffers，函数 "void __cdecl ImGui_ImplGlfw_SwapBuffers(struct ImGuiViewport *,void *)" (?ImGui_ImplGlfw_SwapBuffers@@YAXPAUImGuiViewport@@PAX@Z) 中引用了该符号
+MWDApplication.obj : error LNK2001: 无法解析的外部符号 _glfwSwapBuffers
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwSwapInterval，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwGetWin32Window，函数 "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z) 中引用了该符号
+imgui_impl_glfw.obj : error LNK2019: 无法解析的外部符号 _glfwCreateWindowSurface，函数 "int __cdecl ImGui_ImplGlfw_CreateVkSurface(struct ImGuiViewport *,unsigned __int64,void const *,unsigned __int64 *)" (?ImGui_ImplGlfw_CreateVkSurface@@YAHPAUImGuiViewport@@_KPBXPA_K@Z) 中引用了该符号
+MWDApplication.obj : error LNK2019: 无法解析的外部符号 _glfwInit，函数 _main 中引用了该符号
+MWDApplication.obj : error LNK2019: 无法解析的外部符号 _glfwTerminate，函数 "void __cdecl ImGuiTerminate(void)" (?ImGuiTerminate@@YAXXZ) 中引用了该符号
+MWDApplication.obj : error LNK2019: 无法解析的外部符号 _glfwWindowShouldClose，函数 _main 中引用了该符号
+MWDApplication.obj : error LNK2019: 无法解析的外部符号 _glfwPollEvents，函数 "void __cdecl ImGuiFrameEnd(struct GLFWwindow *)" (?ImGuiFrameEnd@@YAXPAUGLFWwindow@@@Z) 中引用了该符号
+MWDApplication.obj : error LNK2019: 无法解析的外部符号 _glfwGetCurrentContext，函数 "void __cdecl ImGuiFrameEnd(struct GLFWwindow *)" (?ImGuiFrameEnd@@YAXPAUGLFWwindow@@@Z) 中引用了该符号
+MWDApplication.obj : error LNK2019: 无法解析的外部符号 _glfwGetProcAddress，函数 _main 中引用了该符号
+C:\Users\InputWindy\Desktop\MyRenderer\MWDEngine\depend\glfw\lib-vc2019\glfw3.lib : warning LNK4272: 库计算机类型“x64”与目标计算机类型“x86”冲突
+C:\Users\InputWindy\Desktop\MyRenderer\MWDEngine\depend\assimp\lib\assimpd.lib : warning LNK4272: 库计算机类型“x64”与目标计算机类型“x86”冲突
+C:\Users\InputWindy\Desktop\MyRenderer\MWDEngine\Debug\MWDApplication.exe : fatal error LNK1120: 53 个无法解析的外部命令

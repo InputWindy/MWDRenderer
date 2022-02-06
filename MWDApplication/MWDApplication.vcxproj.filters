@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\imgui">
+      <UniqueIdentifier>{c19d9822-e1f2-40b8-8e7c-a56a61c5dd88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\RenderState">
+      <UniqueIdentifier>{5be58403-7095-425a-8c7b-000726486286}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件\Shader">
+      <UniqueIdentifier>{9f3bd8a1-0fc6-4b18-a686-4d36ad858368}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Pass">
+      <UniqueIdentifier>{acdc164a-c613-4dfb-9353-9fe4f07b4cb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\math">
+      <UniqueIdentifier>{d092bda5-c9a2-4322-8d5f-f4767c5a9618}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Skeleton">
+      <UniqueIdentifier>{06130571-8aa8-4228-9d1e-f483c14e017c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Animation">
+      <UniqueIdentifier>{594f5df3-0681-4ce3-b683-1a7b7cbc5c2c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MWDApplication.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDMesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDShader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDCamera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDMaterial.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\depend\stbimg\stb_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\depend\imgui\imconfig.h">
+      <Filter>头文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\depend\imgui\imgui.h">
+      <Filter>头文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\depend\imgui\imgui_impl_glfw.h">
+      <Filter>头文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\depend\imgui\imgui_impl_opengl3.h">
+      <Filter>头文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\depend\imgui\imgui_impl_opengl3_loader.h">
+      <Filter>头文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\depend\imgui\imgui_internal.h">
+      <Filter>头文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\depend\imgui\imstb_rectpack.h">
+      <Filter>头文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\depend\imgui\imstb_textedit.h">
+      <Filter>头文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\depend\imgui\imstb_truetype.h">
+      <Filter>头文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="headers.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDUniform.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDRenderState.h">
+      <Filter>头文件\RenderState</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDRenderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDTransform.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDSkyBox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDPass.h">
+      <Filter>头文件\Pass</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\MWDAABB3.h">
+      <Filter>头文件\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\MWDCylinder3.h">
+      <Filter>头文件\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\MWDLine3.h">
+      <Filter>头文件\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\MWDOBB3.h">
+      <Filter>头文件\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\MWDPlane3.h">
+      <Filter>头文件\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\MWDRay3.h">
+      <Filter>头文件\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\MWDRectangle3.h">
+      <Filter>头文件\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\MWDSegment3.h">
+      <Filter>头文件\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\MWDSphere3.h">
+      <Filter>头文件\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\MWDTriangle3.h">
+      <Filter>头文件\math</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDMath.h">
+      <Filter>头文件\math</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDSkeleton.h">
+      <Filter>头文件\Skeleton</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDBoneNode.h">
+      <Filter>头文件\Skeleton</Filter>
+    </ClInclude>
+    <ClInclude Include="MWDAnimation.h">
+      <Filter>头文件\Animation</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MWDApplication.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDMesh.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDShader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDCamera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDMaterial.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\depend\glad\src\glad.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\depend\imgui\imgui.cpp">
+      <Filter>头文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\depend\imgui\imgui_demo.cpp">
+      <Filter>头文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\depend\imgui\imgui_draw.cpp">
+      <Filter>头文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\depend\imgui\imgui_impl_glfw.cpp">
+      <Filter>头文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\depend\imgui\imgui_impl_opengl3.cpp">
+      <Filter>头文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\depend\imgui\imgui_tables.cpp">
+      <Filter>头文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\depend\imgui\imgui_widgets.cpp">
+      <Filter>头文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDUniform.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDRenderState.cpp">
+      <Filter>头文件\RenderState</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDRenderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDTransform.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDSkyBox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDPass.cpp">
+      <Filter>头文件\Pass</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDSkeleton.cpp">
+      <Filter>头文件\Skeleton</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDBoneNode.cpp">
+      <Filter>头文件\Skeleton</Filter>
+    </ClCompile>
+    <ClCompile Include="MWDAnimation.cpp">
+      <Filter>头文件\Animation</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\depend\imgui\imgui.ini">
+      <Filter>头文件\imgui</Filter>
+    </None>
+    <None Include="..\shaders\default.vert">
+      <Filter>资源文件\Shader</Filter>
+    </None>
+    <None Include="..\shaders\default.frag">
+      <Filter>资源文件\Shader</Filter>
+    </None>
+    <None Include="..\shaders\offScreen.frag">
+      <Filter>资源文件\Shader</Filter>
+    </None>
+    <None Include="..\shaders\offScreen.vert">
+      <Filter>资源文件\Shader</Filter>
+    </None>
+    <None Include="..\shaders\skyBox.frag">
+      <Filter>资源文件\Shader</Filter>
+    </None>
+    <None Include="..\shaders\skyBox.vert">
+      <Filter>资源文件\Shader</Filter>
+    </None>
+    <None Include="..\shaders\shadowMap.frag">
+      <Filter>资源文件\Shader</Filter>
+    </None>
+    <None Include="..\shaders\shadowMap.vert">
+      <Filter>资源文件\Shader</Filter>
+    </None>
+  </ItemGroup>
+</Project>
