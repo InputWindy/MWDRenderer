@@ -11,13 +11,7 @@
 #include "MWDCamera.h"
 #include "MWDRenderer.h"
 
-#define LogMat4(_mat4) \
-for(int i=0;i<4;++i){\
-	for (int j = 0; j < 4; ++j) {\
-		cout<<_mat4[i][j]<<" ";\
-	}\
-cout<<endl;\
-}
+
 
 using namespace std;
 #pragma region ImGui
@@ -170,6 +164,7 @@ int main() {
 	Lucia.m_meshes[0].m_material->SetSampler("normal_map", "C:/Users/InputWindy/Desktop/MWDRenderer/objModel/lucia/E3SwordMd090011NM.png");
 	#pragma endregion
 
+	//Lucia.Log();
 	/*int num = Lucia.m_SkeletonNode.size();
 	for (int i = 0; i < num; ++i) {
 		cout<<Lucia.m_SkeletonNode[i].m_skeletonName<<":" << endl;

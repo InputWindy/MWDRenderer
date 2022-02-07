@@ -7,6 +7,14 @@
 #include "MWDTransform.h"
 #include "MWDSkeleton.h"
 #include "MWDAnimation.h"
+#define LogMat4(_mat4) \
+for(int i=0;i<4;++i){\
+	for (int j = 0; j < 4; ++j) {\
+		cout<<_mat4[i][j]<<" ";\
+	}\
+cout<<endl;\
+}
+
 using namespace math;
 
 #define PrintVec3(_vec3)    \
@@ -71,11 +79,13 @@ public:
         m_transform.SetWorldScale(x,y,z);
     }
     void TraverseSkeletonTree(MWDSkeleton* root_node) {
+        LogMat4(root_node->m_bone.m_OffSetMatrix);
         if (!root_node) {
             return;
         }
         cout << root_node->m_skeletonName << endl;
         int child_num = root_node->m_skeletonChildren.size();
+        
         for (int i = 0; i < child_num; ++i) {
             TraverseSkeletonTree(root_node->m_skeletonChildren[i]);
         }
@@ -195,10 +205,16 @@ private:
             m_rootSkeleton->m_bone.m_fMinTranslation = 0.0f;
             m_rootSkeleton->m_bone.m_OffSetMatrix = mat4(1.0f);
             m_rootSkeleton->m_bone.m_TargetPosInWorld = this->m_transform.GetWorldPosition();
-            m_rootSkeleton->m_bone.m_TransformMatrix = mat4(1.0f);
+            for (int i = 0; i < 4; ++i) {
+                for (int j = 0; j < 4; ++j) {
+                    //填写根骨的Transform（将根骨变换到模型空间）
+                    m_rootSkeleton->m_bone.m_TransformMatrix[i][j] = scene->mRootNode->mTransformation[i][j];
+                }
+            }
             #pragma endregion
             int child_num = scene->mRootNode->mNumChildren;
             for (int i = 0; i < child_num; ++i) {
+                cout <<string( scene->mRootNode->mChildren[i]->mName.data )<< endl;
                 ProcessSkeleton(m_rootSkeleton, scene->mRootNode->mChildren[i]);
             }
         }
@@ -315,19 +331,23 @@ private:
         }
         //连接骨骼的父子节点
         void ProcessSkeleton(MWDSkeleton* parent,aiNode* node) {
-            cout << parent->m_skeletonName << endl;
             int skeleton_id = GetBoneID(string(node->mName.data));
+            //说明当前节点不是骨骼节点，是一个中间节点，所以直接往下继续走
             if (skeleton_id == -1) {
-                string name(node->mName.data);
-                cout << "没找到子骨骼"<<"  "<< name << endl;
-                return;
+                int child_num = node->mNumChildren;
+                for (int i = 0; i < child_num; ++i) {
+                    ProcessSkeleton(parent, node->mChildren[i]);
+                }
             }
-            MWDSkeleton* cur_skeleton = &m_SkeletonNode[skeleton_id];
-            cur_skeleton->m_pParent = parent;
-            parent->addChildSkeleton(cur_skeleton);
-            int child_num = node->mNumChildren;
-            for (int i = 0; i < child_num; ++i) {
-                ProcessSkeleton(cur_skeleton, node->mChildren[i]);
+            //说明当前节点是一个骨骼节点，需要构造父子关系
+            else {
+                MWDSkeleton* cur_skeleton = &m_SkeletonNode[skeleton_id];
+                cur_skeleton->m_pParent = parent;
+                parent->addChildSkeleton(cur_skeleton);
+                int child_num = node->mNumChildren;
+                for (int i = 0; i < child_num; ++i) {
+                    ProcessSkeleton(cur_skeleton, node->mChildren[i]);
+                }
             }
         }
 
