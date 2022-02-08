@@ -79,18 +79,33 @@ public:
         m_transform.SetWorldScale(x,y,z);
     }
     void TraverseSkeletonTree(MWDSkeleton* root_node) {
+        cout << root_node->m_skeletonName << endl;
+        cout << "偏置矩阵：" << endl;
         LogMat4(root_node->m_bone.m_OffSetMatrix);
+        cout << "transform矩阵：" << endl;
+        LogMat4(root_node->m_bone.m_TransformMatrix);
+        cout << "final_transform矩阵：" << endl;
+        LogMat4(root_node->m_bone.m_FinalTransformMatrix);
         if (!root_node) {
             return;
         }
-        cout << root_node->m_skeletonName << endl;
+        
         int child_num = root_node->m_skeletonChildren.size();
         
         for (int i = 0; i < child_num; ++i) {
             TraverseSkeletonTree(root_node->m_skeletonChildren[i]);
         }
     }
-private:
+    void UpdateModel() {
+        m_rootSkeleton->m_bone.m_FinalTransformMatrix = m_rootSkeleton->m_bone.m_TransformMatrix;
+        int bone_num = m_rootSkeleton->m_skeletonChildren.size();
+        for (int i = 0; i < bone_num; i++)
+        {
+            CalSkeletonTransform(m_rootSkeleton, m_rootSkeleton->m_skeletonChildren[i]);
+        }
+        SetUpAllMeshes();
+    }
+    private:
     void loadModel(string const& path)
     {
         Assimp::Importer importer;
@@ -102,26 +117,13 @@ private:
             return;
         }
         directory = path.substr(0, path.find_last_of('/'));
-        LoadAnimation(scene);                     //加载模型包含的所有动画
+        
         LoadSkeleton(scene->mRootNode, scene);    //加载模型所有的骨骼
         BuildSkeletonTree(scene);                 //构造骨骼树
+        LoadAnimation(scene);                     //加载模型包含的所有动画
         LoadMesh(scene);                          //加载所有的蒙皮数据
-        SetUpAllMeshes();                         //生成所有Mesh的VAO
+        UpdateModel();                            //更新模型数据
     }
-    //每个Node对应模型的一个子Mesh
-    /*void processNode(aiNode* node, const aiScene* scene)
-    {
-        for (unsigned int i = 0; i < node->mNumMeshes; i++)
-        {
-            aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-            processMesh(node,mesh, scene);
-        }
-        for (unsigned int i = 0; i < node->mNumChildren; i++)
-        {
-            processNode(node->mChildren[i], scene);
-        }
-    }*/
-    
     private:
         //加载动画数据
         void LoadAnimation(const aiScene* scene) {
@@ -174,7 +176,7 @@ private:
                         for (int m = 0; m < 4; ++m) {
                             for (int n = 0; n < 4; n++)
                             {
-                                skeleton.m_bone.m_OffSetMatrix[m][n] = bone->mOffsetMatrix[m][n];
+                                skeleton.m_bone.m_OffSetMatrix[m][n] = bone->mOffsetMatrix[n][m];
                             }
                         }
                         skeleton.m_bone.m_TargetPosInWorld = vec3(0.0f);
@@ -205,17 +207,17 @@ private:
             m_rootSkeleton->m_bone.m_fMinTranslation = 0.0f;
             m_rootSkeleton->m_bone.m_OffSetMatrix = mat4(1.0f);
             m_rootSkeleton->m_bone.m_TargetPosInWorld = this->m_transform.GetWorldPosition();
+            //填写根骨的Transform（将根骨变换到模型空间）
             for (int i = 0; i < 4; ++i) {
                 for (int j = 0; j < 4; ++j) {
-                    //填写根骨的Transform（将根骨变换到模型空间）
                     m_rootSkeleton->m_bone.m_TransformMatrix[i][j] = scene->mRootNode->mTransformation[i][j];
                 }
             }
+            m_rootSkeleton->m_bone.m_TransformMatrixInverse = inverse(m_rootSkeleton->m_bone.m_TransformMatrix);
             #pragma endregion
             int child_num = scene->mRootNode->mNumChildren;
             for (int i = 0; i < child_num; ++i) {
-                cout <<string( scene->mRootNode->mChildren[i]->mName.data )<< endl;
-                ProcessSkeleton(m_rootSkeleton, scene->mRootNode->mChildren[i]);
+                ProcessSkeleton(identity<mat4>(),m_rootSkeleton, scene->mRootNode->mChildren[i]);
             }
         }
         //设置所有mesh的vao，vbo，ibo
@@ -230,7 +232,6 @@ private:
             if (iter != bone_name_to_index_map.end()) {
                 return iter->second;
             }
-            //cout << "找不到的名字：" << bone_name << "  " << -1 << endl;
             return -1;
         }
         //填写：名称（√），Owner（√），vertices（√），indices（√）
@@ -330,13 +331,22 @@ private:
             return ;
         }
         //连接骨骼的父子节点
-        void ProcessSkeleton(MWDSkeleton* parent,aiNode* node) {
+        void ProcessSkeleton(mat4 parent_transform_matrix,MWDSkeleton* parent,aiNode* node) {
+            mat4 this_transform_matrix, gTansformMatrix;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    this_transform_matrix[i][j] = node->mTransformation[j][i];
+                }
+            }
+            gTansformMatrix = parent_transform_matrix * this_transform_matrix;
             int skeleton_id = GetBoneID(string(node->mName.data));
             //说明当前节点不是骨骼节点，是一个中间节点，所以直接往下继续走
             if (skeleton_id == -1) {
                 int child_num = node->mNumChildren;
                 for (int i = 0; i < child_num; ++i) {
-                    ProcessSkeleton(parent, node->mChildren[i]);
+                    ProcessSkeleton(gTansformMatrix,parent, node->mChildren[i]);
                 }
             }
             //说明当前节点是一个骨骼节点，需要构造父子关系
@@ -344,12 +354,23 @@ private:
                 MWDSkeleton* cur_skeleton = &m_SkeletonNode[skeleton_id];
                 cur_skeleton->m_pParent = parent;
                 parent->addChildSkeleton(cur_skeleton);
+                parent->m_bone.m_TransformMatrix = gTansformMatrix;
+                parent->m_bone.m_TransformMatrixInverse =inverse(gTansformMatrix);
                 int child_num = node->mNumChildren;
                 for (int i = 0; i < child_num; ++i) {
-                    ProcessSkeleton(cur_skeleton, node->mChildren[i]);
+                    ProcessSkeleton(identity<mat4>(),cur_skeleton, node->mChildren[i]);
                 }
             }
         }
-
+        //暂时只更新m_FinalTransformMatrix：需要父节点和当前节点
+        void CalSkeletonTransform(MWDSkeleton* parent_node,MWDSkeleton* this_node) {
+            this_node->m_bone.m_FinalTransformMatrix = parent_node->m_bone.m_FinalTransformMatrix * this_node->m_bone.m_TransformMatrix * this_node->m_bone.m_OffSetMatrix;
+            //LogMat4(this_node->m_bone.m_FinalTransformMatrix);
+            int bone_num = this_node->m_skeletonChildren.size();
+            for (int i = 0; i < bone_num; i++)
+            {
+                CalSkeletonTransform(this_node, this_node->m_skeletonChildren[i]);
+            }
+        }
 };
 

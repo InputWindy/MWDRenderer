@@ -6,6 +6,7 @@
 #include "MWDMaterial.h"
 #include "MWDSkyBox.h"
 #include "MWDPass.h"
+#include "MWDSkeleton.h"
 static float quadVertices[] = { // vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
 		// positions   // texCoords
 		-1.0f,  1.0f,  0.0f, 1.0f,
@@ -168,6 +169,8 @@ public:
 	MWDMesh*		m_curMesh;			//正在被渲染的Mesh
 	MWDMaterial*	m_curMaterial;		//渲染Mesh所使用的材质
 
+	vector<mat4>	m_boneTransform;	//所有骨骼的T矩阵
+
 	unsigned int	screen_width;		//当前视口宽度
 	unsigned int	screen_height;		//当前视口高度
 
@@ -234,8 +237,8 @@ public:
 	}
 	void DrawFrame() {
 		AnalyzeRenderState();
-		SetInnerUniform(ms_Ctx.m_curMaterial);
-		DeliverMaterialUniform(ms_Ctx.m_curMaterial);
+		DeliverInnerUniform(ms_Ctx.m_curMaterial);
+		DeliverEditorUniform(ms_Ctx.m_curMaterial);
 		Render();
 	}
 	void SetCamera(MWDCamera* camera) {
@@ -330,8 +333,8 @@ private:
 		}
 		#pragma endregion
 	}
-	//传递Uniform变量
-	void DeliverMaterialUniform(MWDMaterial* Material) {
+	//传递自定义Uniform变量（用户在Editor里实时设置的Uniform:贴图/数值参数）
+	void DeliverEditorUniform(MWDMaterial* Material) {
 		//↓不变的代码
 		#pragma region 传递Uniform变量
 		//填写Shader参数
@@ -372,20 +375,36 @@ private:
 		}
 		#pragma endregion
 	}
-	//所有Shader都可以传入同样的内置变量，传多了也没关系
-	void SetInnerUniform(MWDMaterial* Material) {
+
+	//传入所有引擎内置的Uniform变量：
+	//mvp矩阵，相机，所有光源，所有骨骼的TransformMatrix(最多200根)
+	void DeliverInnerUniform(MWDMaterial* Material) {
+		MWDMaterial* cur_Material = Material;
+		MWDShader* cur_Shader = Material->m_shaderProgram;
+		cur_Shader->use();
 		#pragma region 填写内置变量
 		//shader内置变量传递（不需要editor内改变的uniform）
 		//从相机读取vp矩阵。
 		mat4 _projection = perspective(radians(ms_Ctx.m_curCamera->Zoom), (float)ms_Ctx.screen_width / ms_Ctx.screen_height, 0.1f, 100.0f);
 		mat4 _view = ms_Ctx.m_curCamera->GetViewMatrix();
-		Material->SetUniform<mat4, MWDMat4>(string("proj_matrix"), _projection);
-		Material->SetUniform<mat4, MWDMat4>(string("view_matrix"), _view);
-		Material->SetUniform<mat4, MWDMat4>(string("model_matrix"), ms_Ctx.m_modelMatrix);
 
-		Material->SetUniform<vec3, MWDVec3>(string("lightPos"), vec3(-100,-100,-100));
-		Material->SetUniform<vec3, MWDVec3>(string("lightColor"), ms_Ctx.m_lightColor);
-		Material->SetUniform<vec3, MWDVec3>(string("viewPos"), ms_Ctx.m_curCamera->Position);
+		cur_Shader->setMat4(string("projection"), _projection);
+		cur_Shader->setMat4(string("view"), _view);
+		cur_Shader->setMat4(string("model"), ms_Ctx.m_modelMatrix);
+
+		cur_Shader->setVec3(string("lightPos"), vec3(-100, -100, -100));
+		cur_Shader->setVec3(string("lightColor"), ms_Ctx.m_lightColor);
+		cur_Shader->setVec3(string("camera.Position"), ms_Ctx.m_curCamera->Position);
+		
+		int bone_num = ms_Ctx.m_boneTransform.size();
+		cur_Shader->setMat4v(string("gBonesTransform"), &(ms_Ctx.m_boneTransform[0]), bone_num);
+		
+		/*for (int i = 0; i < bone_num; i++)
+		{
+			cout << "骨骼Transform矩阵：" << endl;
+			PrintMat4(ms_Ctx.m_boneTransform[i]);
+		}
+		system("pause");*/
 		#pragma endregion
 	}
 	//用当前的渲染状态和Shader来渲染当前的Mesh

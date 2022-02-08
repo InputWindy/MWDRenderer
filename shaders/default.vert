@@ -1,4 +1,5 @@
 #version 330 core
+//Mesh顶点数据（模型空间Pos,nor,uv,tan,bitan,bone_id,bone_weight）
 layout (location = 0) in vec3 aPos;
 
 layout (location = 1) in vec3 aNormal;
@@ -10,33 +11,29 @@ layout (location = 5) in vec4 aBoneWeights;
 
 layout (location = 10) in vec2 TexCoords0;
 	
+//引擎内置变量（所有骨骼的变换矩阵：实时计算）
+const int MAX_BONE_NUM = 200;
+uniform mat4 gBonesTransform[MAX_BONE_NUM];//骨骼的变换矩阵：T_POSE下，该矩阵不会对顶点位置做修改
+
+uniform mat4 model;     //模型空间到世界空间
+uniform mat4 view;      //世界空间到相机空间
+uniform mat4 projection;//相机空间到裁剪空间(gl_Position专用)
+
 out VS_OUT{
     vec3 vs_position;//世界空间坐标
     
     vec2 uv;         //uv
     
-    mat3 TBN;        //TBN矩阵
-
-    flat ivec4   BoneIDs;
-    vec4    BoneWeights;
+    mat3 TBN;        //TBN矩阵(切线空间到模型空间)
 }vs_out;
-
-
-
-//用于计算骨骼动画，修正世界空间坐标（实时传入）
-uniform mat4 gWVP;
-
-//顶点从模型空间转换到
-uniform mat4 model;
-uniform mat4 view;
-uniform mat4 projection;
 
 void main()
 {
-    
+    mat4 BoneTransform = gBonesTransform[aBoneIDs[0]] * aBoneWeights[0];
+    BoneTransform += gBonesTransform[aBoneIDs[1]] * aBoneWeights[1];
+    BoneTransform += gBonesTransform[aBoneIDs[2]] * aBoneWeights[2];
+    BoneTransform += gBonesTransform[aBoneIDs[3]] * aBoneWeights[3];
     vs_out.uv = TexCoords0;
-    vs_out.BoneIDs = aBoneIDs;
-    vs_out.BoneWeights = aBoneWeights;
 
     vec4 worldTangent = model * vec4(aTangent, 1.0);
     vec3 _worldTangent = vec3(worldTangent.xyz);
@@ -51,5 +48,5 @@ void main()
     vs_out.TBN = mat3(_worldTangent,_worldBiTangent , _worldNormal);
 
     //加入骨骼动画后：gl_Position = projection * view * gWVP * model * vec4(aPos, 1.0);
-    gl_Position = projection * view *model * vec4(aPos, 1.0);
+    gl_Position = projection * view *model *BoneTransform* vec4(aPos, 1.0);
 }

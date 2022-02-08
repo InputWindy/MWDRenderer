@@ -180,10 +180,11 @@ int main() {
 		processInput(Hwindow);
 		ImGuiFrameBegin();
 		MWDRenderer::BeginRendering();
-		/*gun.SetWorldEulers( currentFrame/90.0f,0,0);
-		Lucia.Draw();*/
+		gun.SetWorldEulers( currentFrame/90.0f,0,0);
+		//Lucia.UpdateModel();
+		Lucia.Draw();
 		
-		gun.Draw();
+		//gun.Draw();
 		MWDRenderer::EndRendering();
 		ImGuiFrameEnd(Hwindow);
 

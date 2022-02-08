@@ -161,6 +161,10 @@ public:
     {
         glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
     }
+    void setMat4v(const std::string& name, const glm::mat4 mat[],int num) const
+    {
+        glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), num, GL_FALSE, &(mat[0])[0][0]);
+    }
     static MWDShader* GetDefault() {
         return new MWDShader("C:/Users/InputWindy/Desktop/MWDRenderer/shaders/default.vert", "C:/Users/InputWindy/Desktop/MWDRenderer/shaders/default.frag");
     }

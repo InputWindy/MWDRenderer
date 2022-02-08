@@ -72,37 +72,6 @@ public:
     static MWDMaterial* GetDefault() {
         MWDMaterial* defaultMaterial = new MWDMaterial();
         if (defaultMaterial) {
-
-            #pragma region 内置变量
-            vec3 lightColor = vec3();
-            MWDVec3* _lightColor = new MWDVec3(string("lightColor"), string("lightColor"), lightColor);
-            defaultMaterial->AddUniform(_lightColor);
-
-            vec3 lightpos = vec3();
-            MWDVec3* _lightPos = new MWDVec3(string("lightPos"),string("lightPos"),lightpos);
-            defaultMaterial->AddUniform(_lightPos);
-
-            vec3 viewpos = vec3();
-            MWDVec3* _viewpos = new MWDVec3(string("viewPos"), string("viewPos"), viewpos);
-            defaultMaterial->AddUniform(_viewpos);
-
-            mat4 model = mat4();
-            MWDMat4* _model = new MWDMat4(string("model"),string("model_matrix"),model);
-            defaultMaterial->AddUniform(_model);
-
-            mat4 view = mat4();
-            MWDMat4* _view = new MWDMat4(string("view"), string("view_matrix"), view);
-            defaultMaterial->AddUniform(_view);
-
-            mat4 proj = mat4();
-            MWDMat4* _proj = new MWDMat4(string("projection"), string("proj_matrix"), proj);
-            defaultMaterial->AddUniform(_proj);
-
-            mat4 gWVP = mat4();
-            MWDMat4* _gWVP = new MWDMat4(string("gWVP"), string("gWVP_matrix"), gWVP);
-            defaultMaterial->AddUniform(_gWVP);
-            #pragma endregion
-
             #pragma region 编辑器内设置的变量
             MWDTexture* tex = new MWDTexture(string("diffuse_map"), 0);
             defaultMaterial->AddSampler(tex);
@@ -118,9 +87,7 @@ public:
 
             MWDTexture* tex4 = new MWDTexture(string("ao_map"), 4);
             defaultMaterial->AddSampler(tex4);
-
             #pragma endregion
-
         }
         return defaultMaterial;
     }

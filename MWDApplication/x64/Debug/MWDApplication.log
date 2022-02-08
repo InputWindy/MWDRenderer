@@ -2,32 +2,35 @@
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDShader.h(49,40): warning C4101: “e”: 未引用的局部变量
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDMesh.h(147,1): warning C4267: “参数”: 从“size_t”转换到“unsigned int”，可能丢失数据
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(43,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(87,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(283,53): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(286,59): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(261,1): warning C4305: “参数”: 从“double”到“GLfloat”截断
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(394,1): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(93,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(101,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(284,53): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(287,59): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(369,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(264,1): warning C4305: “参数”: 从“double”到“GLfloat”截断
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(399,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(413,1): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDApplication.cpp(120,39): warning C4305: “参数”: 从“double”到“float”截断
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDApplication.cpp(176,22): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDApplication.cpp(219,11): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDApplication.cpp(220,11): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDApplication.cpp(224,16): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDApplication.cpp(221,11): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDApplication.cpp(225,16): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDApplication.cpp(227,10): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDApplication.cpp(226,16): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDApplication.cpp(228,10): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDApplication.cpp(238,28): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDApplication.cpp(229,10): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDApplication.cpp(239,28): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\utility(193,48): warning C4267: “初始化”: 从“size_t”转换到“_Ty2”，可能丢失数据
           with
           [
               _Ty2=int
           ]
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(161): message : 查看对正在编译的函数 模板 实例化“std::pair<const std::string,int>::pair<std::string&,unsigned __int64,0>(_Other1,_Other2 &&) noexcept(false)”的引用
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(163): message : 查看对正在编译的函数 模板 实例化“std::pair<const std::string,int>::pair<std::string&,unsigned __int64,0>(_Other1,_Other2 &&) noexcept(false)”的引用
           with
           [
               _Other1=std::string &,
               _Other2=unsigned __int64
           ]
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(161): message : 查看对正在编译的函数 模板 实例化“std::pair<const std::string,int>::pair<std::string&,unsigned __int64,0>(_Other1,_Other2 &&) noexcept(false)”的引用
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(163): message : 查看对正在编译的函数 模板 实例化“std::pair<const std::string,int>::pair<std::string&,unsigned __int64,0>(_Other1,_Other2 &&) noexcept(false)”的引用
           with
           [
               _Other1=std::string &,
@@ -36,24 +39,28 @@ C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(161): message 
   MWDMesh.cpp
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDShader.h(49,40): warning C4101: “e”: 未引用的局部变量
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDMesh.h(147,1): warning C4267: “参数”: 从“size_t”转换到“unsigned int”，可能丢失数据
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(261,1): warning C4305: “参数”: 从“double”到“GLfloat”截断
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(394,1): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(264,1): warning C4305: “参数”: 从“double”到“GLfloat”截断
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(399,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(413,1): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(43,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(87,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(283,53): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(286,59): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(93,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(101,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(284,53): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(287,59): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(369,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDMesh.cpp(17,47): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\utility(193,48): warning C4267: “初始化”: 从“size_t”转换到“_Ty2”，可能丢失数据
           with
           [
               _Ty2=int
           ]
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(161): message : 查看对正在编译的函数 模板 实例化“std::pair<const std::string,int>::pair<std::string&,unsigned __int64,0>(_Other1,_Other2 &&) noexcept(false)”的引用
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(163): message : 查看对正在编译的函数 模板 实例化“std::pair<const std::string,int>::pair<std::string&,unsigned __int64,0>(_Other1,_Other2 &&) noexcept(false)”的引用
           with
           [
               _Other1=std::string &,
               _Other2=unsigned __int64
           ]
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(161): message : 查看对正在编译的函数 模板 实例化“std::pair<const std::string,int>::pair<std::string&,unsigned __int64,0>(_Other1,_Other2 &&) noexcept(false)”的引用
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(163): message : 查看对正在编译的函数 模板 实例化“std::pair<const std::string,int>::pair<std::string&,unsigned __int64,0>(_Other1,_Other2 &&) noexcept(false)”的引用
           with
           [
               _Other1=std::string &,
@@ -63,23 +70,26 @@ C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(161): message 
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDShader.h(49,40): warning C4101: “e”: 未引用的局部变量
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDMesh.h(147,1): warning C4267: “参数”: 从“size_t”转换到“unsigned int”，可能丢失数据
 C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(43,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(87,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(283,53): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(286,59): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(261,1): warning C4305: “参数”: 从“double”到“GLfloat”截断
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(394,1): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(93,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(101,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(284,53): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(287,59): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(369,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(264,1): warning C4305: “参数”: 从“double”到“GLfloat”截断
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(399,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDRenderer.h(413,1): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\utility(193,48): warning C4267: “初始化”: 从“size_t”转换到“_Ty2”，可能丢失数据
           with
           [
               _Ty2=int
           ]
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(161): message : 查看对正在编译的函数 模板 实例化“std::pair<const std::string,int>::pair<std::string&,unsigned __int64,0>(_Other1,_Other2 &&) noexcept(false)”的引用
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(163): message : 查看对正在编译的函数 模板 实例化“std::pair<const std::string,int>::pair<std::string&,unsigned __int64,0>(_Other1,_Other2 &&) noexcept(false)”的引用
           with
           [
               _Other1=std::string &,
               _Other2=unsigned __int64
           ]
-C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(161): message : 查看对正在编译的函数 模板 实例化“std::pair<const std::string,int>::pair<std::string&,unsigned __int64,0>(_Other1,_Other2 &&) noexcept(false)”的引用
+C:\Users\InputWindy\Desktop\MWDRenderer\MWDApplication\MWDModel.h(163): message : 查看对正在编译的函数 模板 实例化“std::pair<const std::string,int>::pair<std::string&,unsigned __int64,0>(_Other1,_Other2 &&) noexcept(false)”的引用
           with
           [
               _Other1=std::string &,

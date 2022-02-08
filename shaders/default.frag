@@ -45,15 +45,11 @@ in VS_OUT{
     vec2 uv;         //uv
     
     mat3 TBN;        //TBN矩阵
-
-    flat ivec4   BoneIDs;
-    vec4    BoneWeights;
 }fs_in;
 
 //暂时使用的内置变量，之后需要替换成光源和相机
 uniform vec3 lightPos;
-uniform vec3 lightColor;//pbr
-uniform vec3 viewPos;//pbr
+uniform vec3 lightColor;
 
 //内置变量（最多一个太阳，最多4个灯泡，最多4个手电筒，最多4个发光平面,一台摄像机）
 uniform DirectionalLight sunLight;
@@ -139,7 +135,7 @@ void main()
     vec3 lightDir = normalize(lightPos - fs_in.vs_position);
     float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);//阴影bias（暂时无用）
     //视线方向
-    vec3 viewDir = normalize(viewPos - fs_in.vs_position);
+    vec3 viewDir = normalize(camera.Position - fs_in.vs_position);
     //反射方向
     vec3 reflectDir = reflect(-lightDir, normal);
     //半角向量
